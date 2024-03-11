@@ -95,6 +95,7 @@ total 16
 Modifier la config du server SSH du serveur Web
 ```
 sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /etc/ssh/sshd_config
+systemctl restart ssh
 ```
 
 ### Sur le serveur PKI :
