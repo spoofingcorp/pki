@@ -203,8 +203,7 @@ making regular backups of this folder is ideal.
 
 ## Test HTTPS
 
-
-Lancer une capture de traffic pour constater le chiffrement des réquêtes du formualaire https://web.m2.dawan/
+Lancer une capture de traffic pour constater le chiffrement des réquêtes https://web.m2.dawan/
 
 - Quel protocole est utilisé ?
 
@@ -212,7 +211,11 @@ Normalement vous devez voire du TLS 1.3. Si ce n’est pas le cas, votre navigat
 
 Dans Chrome, taper > chrome://flags/#tls13-variant
 
+Pour qu'ensuite le navigateur valide le certificat proposer par le serveur web, vous devait importer le certificat de l'autorité PKI dans votre magasin de certificat.
 
+Renseigner l'URL suivante dans le navigateur: https://pki.m2.dawan:8443/roots.pem
+
+Un certificat est téléchargé, importer le dans le magasin de certificat de votre client.
 
 
 ## Rendu
