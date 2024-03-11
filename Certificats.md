@@ -24,6 +24,163 @@ img[alt~="center"] {
 ---
 <!-- _class: EnAvant -->
 
+Fichiers CSR, CRT, KEY, CA et PEM dans le contexte de la PKI
+--------------------------------------------------------------------------
+
+### Introduction
+
+Ce cours vise à expliquer les concepts fondamentaux liés aux fichiers CSR, CRT, KEY, CA et PEM dans le contexte de l'infrastructure à clés publiques (PKI).
+
+Prérequis:
+
+-   Notions de base en cryptographie
+-   Fonctionnement de la PKI
+
+Objectifs:
+
+-   Comprendre la différence entre les fichiers CSR, CRT, KEY et PEM
+-   Savoir comment générer et utiliser ces fichiers
+-   Appréhender le rôle de l'autorité de certification (CA)
+
+### 1\. Fichiers CSR (Certificate Signing Request)
+
+Un fichier CSR est une demande de signature de certificat. Il contient des informations sur l'entité qui souhaite obtenir un certificat numérique, telles que son nom, son adresse e-mail et sa clé publique. Le fichier CSR est généré par le demandeur du certificat et soumis à une autorité de certification (CA) pour validation et signature.
+
+Contenu d'un fichier CSR:
+
+-   Informations sur le demandeur (nom, adresse e-mail, etc.)
+-   Clé publique du demandeur
+-   Algorithme de signature utilisé
+-   Hash de l'objet à signer
+
+Formats de fichier CSR:
+
+-   PEM (Privacy Enhanced Mail)
+-   DER (Distinguished Encoding Rules)
+
+### 2\. Fichiers CRT (Certificat)
+
+Un fichier CRT est un certificat numérique émis par une CA. Il contient des informations sur le titulaire du certificat, telles que son nom, son adresse e-mail et sa clé publique, ainsi que la signature numérique de la CA. Le fichier CRT est utilisé pour authentifier l'identité du titulaire du certificat.
+
+Contenu d'un fichier CRT:
+
+-   Informations sur le titulaire du certificat (nom, adresse e-mail, etc.)
+-   Clé publique du titulaire du certificat
+-   Informations sur l'autorité de certification (nom, émetteur, etc.)
+-   Signature numérique de la CA
+-   Période de validité du certificat
+
+Formats de fichier CRT:
+
+-   PEM
+-   DER
+
+### 3\. Fichiers KEY (Clé privée)
+
+Un fichier KEY est un fichier qui contient la clé privée du demandeur du certificat. La clé privée est utilisée pour décrypter les messages chiffrés et pour signer numériquement les documents. Il est important de garder la clé privée confidentielle et sécurisée.
+
+Formats de fichier KEY:
+
+-   PEM
+-   DER
+-   PKCS#8
+
+### 4\. Autorité de certification (CA)
+
+Une autorité de certification est une entité de confiance qui émet et gère les certificats numériques. La CA est responsable de la validation de l'identité des demandeurs de certificats et de la signature des certificats avec sa clé privée.
+
+Rôles d'une CA:
+
+-   Valider l'identité des demandeurs de certificats
+-   Émettre et signer des certificats numériques
+-   Révoquer les certificats compromis
+-   Gérer la liste de révocation des certificats (CRL)
+
+### 5\. Fichiers PEM (Privacy Enhanced Mail)
+
+Le format PEM est un format de fichier standard pour stocker des données de sécurité numérique, telles que des certificats, des clés privées et des demandes de signature de certificat. Le format PEM utilise un encodage Base64 pour convertir les données binaires en une chaîne de caractères ASCII.
+
+Avantages du format PEM:
+
+-   Facilité de manipulation et d'échange
+-   Compatibilité avec de nombreux logiciels et applications
+
+---
+
+# Cours sur les Certificats et Autorité PKI Privée avec OpenSSL
+
+## Introduction
+
+La gestion des certificats et la mise en place d'une autorité de certification (CA) PKI (Public Key Infrastructure) privée sont essentielles pour sécuriser les communications et authentifier les parties dans diverses architectures réseau. Ce cours vous fournira les bases nécessaires pour comprendre et travailler avec des certificats numériques, en utilisant OpenSSL comme outil principal.
+
+## OpenSSL
+
+OpenSSL est une puissante boîte à outils logicielle pour utiliser la cryptographie SSL/TLS. Elle permet de créer des clés privées, des certificats, de générer des demandes de signature de certificat (CSR) et de mettre en place votre propre autorité de certification (CA).
+
+### Installation
+
+```bash
+# Sur les systèmes basés sur Debian/Ubuntu
+sudo apt-get install openssl
+
+# Sur les systèmes basés sur Red Hat/CentOS
+sudo yum install openssl
+```
+
+## Formats de Certificats
+
+Les certificats peuvent être présentés dans différents formats, les plus courants étant PEM, DER, et PKCS.
+
+### PEM
+
+- Le format le plus courant pour les certificats SSL/TLS.
+- Encodé en Base64.
+- Commence par `-----BEGIN CERTIFICATE-----` et se termine par `-----END CERTIFICATE-----`.
+
+### DER
+
+- Format binaire, non lisible directement.
+- Utilisé principalement dans les environnements Java.
+
+### PKCS
+
+- Ensemble de standards pour la gestion des certificats.
+- PKCS#12 (PFX) est souvent utilisé pour exporter et importer des certificats et des clés privées.
+
+## Demande de Signature de Certificat (CSR)
+
+Un CSR est une demande envoyée à une autorité de certification pour obtenir un certificat numériquement signé pour votre entité.
+
+### Création d'un CSR
+
+```bash
+openssl req -new -key votreCléPrivée.key -out votreCSR.csr
+```
+
+## Liste de Révocation des Certificats (CRL)
+
+Une CRL est une liste publiée par une autorité de certification qui contient les certificats révoqués avant leur expiration.
+
+### Génération d'une CRL
+
+```bash
+openssl ca -gencrl -out crl.pem
+```
+
+## Online Certificate Status Protocol (OCSP)
+
+OCSP est utilisé pour obtenir le statut de révocation d'un certificat spécifique sans nécessiter le téléchargement complet d'une CRL.
+
+### Vérification avec OCSP
+
+```bash
+openssl ocsp -issuer issuer_cert.pem -cert cert.pem -url http://ocsp.mydomain.com
+```
+
+## Conclusion
+
+La maîtrise des certificats et la gestion d'une autorité PKI privée sont cruciales pour la sécurité des communications électroniques. En utilisant OpenSSL, vous pouvez créer votre propre infrastructure de clés publiques, générer des certificats, et gérer leur cycle de vie complet.
+
 
 
 # Objectif des certificats
