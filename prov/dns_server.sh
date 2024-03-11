@@ -6,8 +6,8 @@ echo "192.168.33.21 pki.m2.dawan" | sudo tee -a /etc/hosts
 echo "192.168.33.22 web.m2.dawan" | sudo tee -a /etc/hosts
 
 # Mise à jour des paquets et installation de Bind9
-sudo apt-get update
-sudo apt-get install -y bind9 bind9utils bind9-doc
+sudo apt update
+sudo apt install -y bind9 bind9utils bind9-doc
 
 # Configuration des options de Bind9 pour autoriser les requêtes de tous les réseaux privés
 cat << EOF | sudo tee /etc/bind/named.conf.options

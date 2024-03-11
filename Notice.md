@@ -51,10 +51,7 @@ Configurer votre carte réseau physique avec le DNS 192.168.56.10. :warning:
 
 ### PKI
 
-l'autorité de certification éxecute step-ca (https://smallstep.com/docs/step-ca), en écoute sur le port 8443.
-En l'état le service propose un serveur ACME. 
-
-Ce dernier est accessible via https://pki.m2dawan.local:8443/acme/acme/directory
+l'autorité de certification éxecute Easy-RSA.
 
 La CA est configuré pour pouvoir emmetre des certificats SSL
 
@@ -62,16 +59,16 @@ Le certificat racine de cette CA est disponible dans /etc/step-ca/certs
 
 ### WEB
 
-Le serveur web execute un serveur Apache2 configuré avec le domaine http://web.m2dawan.local
+Le serveur web execute un serveur Apache2 configuré avec le domaine http://web.m2.dawan
 
 ## Exercice
 
 Une fois l'infrastructure déployée avec Vagrant, changer le DNS de votre carte réseau :warning:
-Sur votre machine hôte physique, configurer en serveur dns primaire 192.168.56.10
+Sur votre machine hôte physique, configurer en serveur dns primaire 192.168.33.20
 
 
 ### Test HTTP
-- Se rendre sur l'url http://web.m2dawan.local
+- Se rendre sur l'url http://web.m2.dawan
 - Faite une capture du traffic à l’aide de wireshark.
 
 - Mettre en place SSL sur le serveur web à l'aide de Certbot et de votre autorité PKI.
@@ -94,8 +91,16 @@ total 16
 \-rw------- 1 step step 603 Dec 8 13:06 root_ca.crt
 ```
 
+### Sur le serveur Web :
+Modifier la config du server SSH du serveur Web
 ```
-scp root_ca.crt [admin@192.168.56.12](mailto:admin@192.168.56.1)
+sed -i 's/ChallengeResponseAuthentication no/ChallengeResponseAuthentication yes/g' /etc/ssh/sshd_config
+```
+
+### Sur le serveur PKI :
+Copier le CA sur le serveur web à partir du serveur PKI
+```
+scp root_ca.crt vagrant@192.168.33.22:/vagrant
 
 root_ca.crt 100% 603 1.0MB/s
 ```
@@ -106,7 +111,7 @@ root_ca.crt 100% 603 1.0MB/s
 
 ```
 sudo su -
-mv /tmp/root_ca.crt /usr/local/share/ca-certificates/pki_root_ca.crt
+mv /vagrant/root_ca.crt /usr/local/share/ca-certificates/pki_root_ca.crt
 update-ca-certificates
 
 Updating certificates in /etc/ssl/certs...
@@ -116,32 +121,32 @@ done
 ```
 
 ```
-certbot --apache --server https://pki.m2dawan.local:8443/acme/acme/directory
+certbot --apache --server https://pki.m2.dawan:8443/acme/acme/directory
 
 Enter email address (used for urgent renewal and security notices) (Enter ’c’ to
-cancel): rbrusse@m2dawan.local
+cancel): rbrusse@m2.dawan
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Please read the Terms of Service at None. You must agree in order to register
-with the ACME server at https://pki.m2dawan.local:8443/acme/acme/directory
+with the ACME server at https://pki.m2.dawan:8443/acme/acme/directory
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-(A)gree/(C)ancel: a
+(A)gree/(C)ancel: A
 
 Would you be willing to share your email address with the Electronic Frontier
 Foundation, a founding partner of the Let’s Encrypt project and the non-profit
 organization that develops Certbot? We’d like to send you email about our work
 encrypting the web, EFF news, campaigns, and ways to support digital freedom.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-(Y)es/(N)o: n
+(Y)es/(N)o: N
 
 Which names would you like to activate HTTPS for?
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-1: m2dawan.local
+1: m2.dawan
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter ’c’ to cancel): 1
 Obtaining a new certificate
 Performing the following challenges:
-http-01 challenge for m2dawan.local
+http-01 challenge for m2.dawan
 Enabled Apache rewrite module
 Waiting for verification...
 Cleaning up challenges
@@ -163,15 +168,15 @@ Select the appropriate number [1-2] then [enter] (press ’c’ to cancel): 2
 Enabled Apache rewrite module
 Redirecting vhost in /etc/apache2/sites-enabled/web.conf to ssl vhost in /etc/apache2/sites-
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Congratulations! You have successfully enabled https://m2dawan.local
+Congratulations! You have successfully enabled https://m2.dawan
 You should test your configuration at:
-https://www.ssllabs.com/ssltest/analyze.html?d=m2dawan.local
+https://www.ssllabs.com/ssltest/analyze.html?d=m2.dawan
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 IMPORTANT NOTES:
 - Congratulations! Your certificate and chain have been saved at:
-/etc/letsencrypt/live/web.m2dawan.local/fullchain.pem
+/etc/letsencrypt/live/web.m2.dawan/fullchain.pem
 Your key file has been saved at:
-/etc/letsencrypt/live/web.m2dawan.local/privkey.pem
+/etc/letsencrypt/live/web.m2.dawan/privkey.pem
 Your cert will expire on 2022-12-09. To obtain a new or tweaked
 version of this certificate in the future, simply run certbot again
 with the "certonly" option. To non-interactively renew *all* of
@@ -185,13 +190,16 @@ making regular backups of this folder is ideal.
 ```
 
 ## Test HTTPS
-Lancer une capture de traffic pour constater le chiffrement des réquêtes du formualaire https://web.m2dawan.local/authent.php
+
+
+Lancer une capture de traffic pour constater le chiffrement des réquêtes du formualaire https://web.m2.dawan/
 
 - Quel protocole est utilisé ?
 
 Normalement vous devez voire du TLS 1.3. Si ce n’est pas le cas, votre navigateur n’est pas a jour ou est mal configuré
 
-:warning:  Le Magasin de certificat de Firefox est indépendant du magasin de certificat Windows (Chrome/Edg)
+Dans Chrome, taper > chrome://flags/#tls13-variant
+
 
 
 
