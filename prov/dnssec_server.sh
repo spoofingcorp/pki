@@ -44,6 +44,8 @@ cat <<EOF | sudo tee /etc/bind/zones/db.m2.dawan
 dns     IN      A       192.168.33.20
 pki     IN      A       192.168.33.21
 web     IN      A       192.168.33.22
+EOF
+
 
 # Configuration du fichier named.conf.local
 cat <<EOF | sudo tee -a /etc/bind/named.conf.local
