@@ -11,10 +11,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # DNS Server Configuration
   config.vm.define "dns_server" do |dns|
-    dns.vm.box = "debian/bullseye64" # Mise à jour pour utiliser Debian 11
+    dns.vm.box = "ubuntu/focal64"
     dns.vm.hostname = "dns.m2.dawan"
     dns.vm.network "private_network", ip: "192.168.33.20"
-    # Use a script from the "prov" directory to provision the DNS server
     dns.vm.provision "shell", path: "prov/dns_server.sh"
   end
 
