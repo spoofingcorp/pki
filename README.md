@@ -13,6 +13,10 @@ https://www.dawan.fr/formations/linux/linux-pour-les-experts/linux-securite-prep
 - LAB 01 - Infra PKI > Voir [Notice](./Notice.md)
 - Rappel notions certificats > [Notions Certificat](./Certificats.md)
 
+- Fondamentaux LPI 303-300 > [Fondamentaux LPI 303-300](./LPIC-3%20Exam_303-300_Security.md)
+
+
+
 
 
 
