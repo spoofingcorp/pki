@@ -47,7 +47,7 @@ Vous pouvez vous connecter en SSH avec la commande Vagrant SSH.
 ### DNS
 
 Utilisé pour la résolution DNS de domaine sur l'environement.
-Configurer votre carte réseau physique avec le DNS 192.168.56.10. :warning:
+Configurer votre carte réseau physique avec le DNS 192.168.33.20. :warning:
 
 ### PKI
 
