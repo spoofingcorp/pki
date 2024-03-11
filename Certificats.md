@@ -34,7 +34,9 @@ Ce cours vise à expliquer les concepts fondamentaux liés aux fichiers CSR, CRT
 Prérequis:
 
 -   Notions de base en cryptographie
--   Fonctionnement de la PKI
+-   Fonctionnement de la PKI 
+
+https://dev.to/techschoolguru/a-complete-overview-of-ssl-tls-and-its-cryptographic-system-36pd
 
 Objectifs:
 

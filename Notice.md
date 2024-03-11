@@ -35,7 +35,7 @@
 
 ## Infrastructure
 
-L'infrastructure comporte 3 serveurs : enregistré sur le domaine ais-wf3.local
+L'infrastructure comporte 3 serveurs : enregistré sur le domaine m2.dawan
 
 - dns : 192.168.33.20
 - pki : 192.168.33.21
@@ -58,11 +58,14 @@ Configurer votre carte réseau physique avec le DNS 192.168.33.20. :warning:
 
 ### PKI
 
-l'autorité de certification éxecute Easy-RSA.
+L'autorité de certification execute Smallstep
+https://github.com/smallstep/certificates
+https://smallstep.com/certificates/
 
 La CA est configuré pour pouvoir emmetre des certificats SSL
 
 Le certificat racine de cette CA est disponible dans /etc/step-ca/certs
+
 
 ### WEB
 
@@ -128,6 +131,7 @@ Running hooks in /etc/ca-certificates/update.d...
 done
 ```
 
+### Obtenir un certificat SSL pour le serveur Web avec Certbot
 ```
 certbot --apache --server https://pki.m2.dawan:8443/acme/acme/directory
 

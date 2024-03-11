@@ -9,6 +9,8 @@ https://www.lpi.org/our-certifications/exam-303-objectives
 
 https://www.dawan.fr/formations/linux/linux-pour-les-experts/linux-securite-preparation-lpi-303
 
+https://dev.to/techschoolguru/a-complete-overview-of-ssl-tls-and-its-cryptographic-system-36pd
+
 ## Infrastructure PKI
 - LAB 01 - Infra PKI > Voir [Notice](./Notice.md)
 - Rappel notions certificats > [Notions Certificat](./Certificats.md)
