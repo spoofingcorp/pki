@@ -107,7 +107,7 @@ Avantages du format PEM:
 
 ---
 
-# Cours sur les Certificats et Autorité PKI Privée avec OpenSSL
+# Certificats et Autorité PKI Privée avec OpenSSL
 
 ## Introduction
 
@@ -177,17 +177,34 @@ OCSP est utilisé pour obtenir le statut de révocation d'un certificat spécifi
 openssl ocsp -issuer issuer_cert.pem -cert cert.pem -url http://ocsp.mydomain.com
 ```
 
-## Conclusion
-
-La maîtrise des certificats et la gestion d'une autorité PKI privée sont cruciales pour la sécurité des communications électroniques. En utilisant OpenSSL, vous pouvez créer votre propre infrastructure de clés publiques, générer des certificats, et gérer leur cycle de vie complet.
 
 
+# Cryptographie
 
-# Objectif des certificats
-*  ## **La confiance !** 
+1.  Cryptographie Symétrique et Asymétrique :
+
+    -   La cryptographie symétrique utilise une seule clé pour chiffrer et déchiffrer les données. Les algorithmes symétriques sont généralement plus rapides mais nécessitent une gestion sécurisée des clés.
+    -   La cryptographie asymétrique utilise une paire de clés : une clé publique et une clé privée. La clé publique est utilisée pour chiffrer les données tandis que la clé privée correspondante est utilisée pour déchiffrer les données. Cette approche offre des avantages en termes de sécurité, notamment en ce qui concerne la distribution des clés.
+2.  Fonctions de Hachage :
+
+    -   Les fonctions de hachage sont des algorithmes qui prennent des données en entrée et produisent une empreinte numérique de longueur fixe en sortie. Cette empreinte est unique pour chaque ensemble de données d'entrée et permet de vérifier l'intégrité des données.
+3.  Signature Numérique :
+
+    -   Les signatures numériques sont utilisées pour vérifier l'authenticité et l'intégrité des données. Elles sont créées en utilisant une clé privée pour chiffrer une empreinte numérique des données, et peuvent être vérifiées à l'aide de la clé publique correspondante.
+4.  Certificats Numériques :
+
+    -   Les certificats numériques sont des documents électroniques qui associent une identité à une clé publique. Ils sont signés numériquement par une autorité de certification (CA) et servent à établir la confiance dans les échanges numériques.
+5.  Protocoles de Sécurité :
+
+    -   Comprendre les protocoles de sécurité, tels que SSL/TLS (Secure Sockets Layer/Transport Layer Security), qui utilisent des certificats PKI pour sécuriser les communications sur Internet.
+6.  Gestion des Clés :
+
+    -   La gestion sécurisée des clés est cruciale en cryptographie. Cela implique la génération sécurisée des clés, la distribution sécurisée des clés, la rotation régulière des clés, et la révocation des clés compromises.
+7.  Attaques Cryptographiques :
+
+    -   Connaître les différentes attaques cryptographiques, telles que les attaques par force brute, les attaques par canal auxiliaire, et les attaques par faute, afin de comprendre les vulnérabilités potentielles des systèmes cryptographiques.
 
 ---
-## La confiance 
 
 ### Les clefs de la confiance
 
