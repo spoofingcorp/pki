@@ -39,7 +39,9 @@ L'infrastructure comporte 3 serveurs : enregistré sur le domaine ais-wf3.local
 
 Vous pouvez vous connecter en SSH avec la commande Vagrant SSH.
 `vagrant ssh dns_server`
+
 `vagrant ssh pki_server`
+
 `vagrant ssh web_server`
 
 
