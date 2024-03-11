@@ -1,5 +1,10 @@
 # LAB - Infrastructure PKI  :rocket:  :broccoli: :oden: :dango: 
 
+## Diagram topologie
+
+![](Images/diagram_lab01.png)
+
+
 # Prérequis infra Vagrant - Infrastructure PKI
 
 ### Prérequis Virtualbox
