@@ -41,7 +41,7 @@ cat <<EOF | sudo tee /etc/bind/zones/db.m2.dawan
 ;
 @       IN      NS      ns1.m2.dawan.
 @       IN      A       192.168.33.20
-dns     IN      A       192.168.33.20
+ns1     IN      A       192.168.33.20
 pki     IN      A       192.168.33.21
 web     IN      A       192.168.33.22
 EOF
