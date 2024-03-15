@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     dns.vm.box = "ubuntu/focal64"
     dns.vm.hostname = "dns.m2.dawan"
     dns.vm.network "private_network", ip: "192.168.33.20"
-    dns.vm.provision "shell", path: "prov/dnssec_server.sh"
+    dns.vm.provision "shell", path: "prov/dns_server.sh"
   end
 
   # PKI Server Configuration
