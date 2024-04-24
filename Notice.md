@@ -62,7 +62,7 @@ L'autorité de certification execute Smallstep
 https://github.com/smallstep/certificates
 https://smallstep.com/certificates/
 
-La CA est configuré pour pouvoir emmetre des certificats SSL
+La CA est configurée pour pouvoir emmetre des certificats SSL
 
 Le certificat racine de cette CA est disponible dans /etc/step-ca/certs
 
@@ -74,7 +74,7 @@ Le serveur web execute un serveur Apache2 configuré avec le domaine http://web.
 ## Exercice
 
 Une fois l'infrastructure déployée avec Vagrant, changer le DNS de votre carte réseau :warning:
-Sur votre machine hôte physique, configurer en serveur dns primaire 192.168.33.20
+Sur votre machine hôte physique, configurer votre dns primaire avec l'IP du serveur DNS > 192.168.33.20
 
 
 ### Test HTTP
