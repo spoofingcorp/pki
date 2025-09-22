@@ -14,7 +14,10 @@
 
 - Téléchargez l'extension pack Virtualbox pour votre version de VB **Oracle_VM_VirtualBox_Extension_Pack-7.0.XXX** , ainsi que l'ISO **VBoxGuestAdditions_7.0.XXX.iso**
 - Importer l'extension pack Virtualbox, utiliser `Ctrl+T` pour y accéder et importer > `Oracle_VM_VirtualBox_Extension_Pack-7.0.12.vbox-extpack`
+  https://download.virtualbox.org/virtualbox/
+  
 - Importer dans le gestionnaire de média, utiliser `Ctrl+D` pour y accéder et ajouter l'iso > `VBoxGuestAdditions_7.0.XXXX.iso`
+  https://download.virtualbox.org/virtualbox/
 
 - Télécharger et installer Vagrant
 - vagrant : https://developer.hashicorp.com/vagrant/downloads
