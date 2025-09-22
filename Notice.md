@@ -120,6 +120,8 @@ Se placer dans le dossier des certificats de StepCA
 
 `scp root_ca.crt vagrant@192.168.33.22:/vagrant`
 
+Password: vagrant
+
 root_ca.crt 100% 603 1.0MB/s
 
 
