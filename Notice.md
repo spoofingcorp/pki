@@ -28,7 +28,7 @@
 - Créer un dossier dans votre répertoire perso Windows - `vagrant-conf`
 - Se placer en CLI ou avec VScode dans le dossier `vagrant-conf`
 - Cloner le dépôt Git `git clone https://github.com/spoofingcorp/pki.git`
-- Ouvrir le dossier` vagrant-conf` avec **VScode** ou votre interpréteur CLI préféré
+- Ouvrir le dossier` vagrant-conf/pki` avec **VScode** ou votre interpréteur CLI préféré
 - Étudier le fonctionnement du fichier Vangrantfile (que va-t-il déployer ?)
 - Se placer dans le path du répertoire comportant le vangrantfile en CMD ou PowerShell 
 - Lancer la commande `vagrant up`
