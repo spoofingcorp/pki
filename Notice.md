@@ -115,7 +115,10 @@ systemctl restart ssh
 ### Sur le serveur PKI :
 Copier le CA sur le serveur web à partir du serveur PKI
 ```
-scp root_ca.crt vagrant@192.168.33.22:/vagrant
+Se placer dans le dossier des certificats de StepCA
+`cd /etc/step-ca/certs`
+
+`scp root_ca.crt vagrant@192.168.33.22:/vagrant`
 
 root_ca.crt 100% 603 1.0MB/s
 ```
